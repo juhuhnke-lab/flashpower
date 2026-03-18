@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Flash Power Cell - Assistência Técnica de Celulares em São Paulo. Troca de tela, bateria e reparo de placa. Orçamento grátis, retirada e entrega a domicílio." />
+  <meta name="robots" content="index, follow" />
+  <title>Flash Power Cell | Assistência Técnica de Celulares - São Paulo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --green: #00e676;
+      --green-dark: #00c853;
+      --green-dim: #00e67622;
+      --black: #080a08;
+      --black-2: #0f120f;
+      --black-3: #161a16;
+      --gray: #9e9e9e;
+      --gray-light: #f5f5f5;
+      --white: #ffffff;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Barlow', sans-serif;
+      background: var(--black);
+      color: var(--white);
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 6vw;
+      background: rgba(8,10,8,0.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(0,230,118,0.12);
+    }
+    .logo {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 1.55rem;
+      letter-spacing: 0.04em;
+      color: var(--white);
+      text-decoration: none;
+    }
+    .logo span { color: var(--green); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.88rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--gray);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--green); }
+    .nav-cta {
+      background: var(--green) !important;
+      color: var(--black) !important;
+      padding: 10px 22px;
+      border-radius: 4px;
+      font-weight: 700 !important;
+    }
+    .nav-cta:hover { background: var(--green-dark) !important; }
+
+    /* HERO */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      background: var(--black);
+      padding: 120px 6vw 80px;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 60% 60% at 80% 50%, rgba(0,230,118,0.1) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 10% 80%, rgba(0,230,118,0.06) 0%, transparent 60%);
+    }
+    .hero-grid {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(0,230,118,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,230,118,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 0%, transparent 100%);
+    }
+    .hero-content { position: relative; z-index: 2; max-width: 680px; }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--green-dim);
+      border: 1px solid rgba(0,230,118,0.3);
+      border-radius: 100px;
+      padding: 6px 16px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 1.8rem;
+      animation: fadeUp 0.6s ease both;
+    }
+    .badge-dot {
+      width: 8px; height: 8px;
+      background: var(--green);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.4); }
+    }
+    .hero-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: clamp(3rem, 8vw, 6rem);
+      line-height: 0.95;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+      margin-bottom: 1.4rem;
+      animation: fadeUp 0.6s 0.1s ease both;
+    }
+    .hero-title .accent { color: var(--green); }
+    .hero-sub {
+      font-size: 1.1rem;
+      font-weight: 300;
+      color: #ccc;
+      line-height: 1.7;
+      margin-bottom: 2rem;
+      max-width: 500px;
+      animation: fadeUp 0.6s 0.2s ease both;
+    }
+    .hero-perks {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 2.4rem;
+      animation: fadeUp 0.6s 0.3s ease both;
+    }
+    .perk {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: #ccc;
+    }
+    .perk-icon {
+      width: 24px; height: 24px;
+      background: var(--green-dim);
+      border: 1px solid rgba(0,230,118,0.25);
+      border-radius: 5px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.8rem;
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      animation: fadeUp 0.6s 0.4s ease both;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--green);
+      color: var(--black);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800;
+      font-size: 1rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 16px 32px;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: all 0.2s;
+      box-shadow: 0 0 30px rgba(0,230,118,0.3);
+    }
+    .btn-primary:hover {
+      background: var(--green-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 0 50px rgba(0,230,118,0.45);
+    }
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: transparent;
+      color: var(--white);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 16px 32px;
+      border-radius: 6px;
+      border: 1px solid rgba(255,255,255,0.2);
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .btn-secondary:hover { border-color: var(--green); color: var(--green); }
+
+    .hero-stats {
+      position: absolute;
+      right: 6vw; bottom: 80px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      animation: fadeUp 0.6s 0.5s ease both;
+    }
+    .stat-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(0,230,118,0.15);
+      border-radius: 10px;
+      padding: 20px 28px;
+      text-align: center;
+    }
+    .stat-num {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: var(--green);
+      line-height: 1;
+    }
+    .stat-label { font-size: 0.72rem; color: var(--gray); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 4px; }
+
+    /* SECTIONS */
+    section { padding: 100px 6vw; }
+    .section-tag {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 0.8rem;
+    }
+    .section-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      line-height: 1.0;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+    .section-desc { font-size: 1rem; color: var(--gray); line-height: 1.7; max-width: 520px; }
+
+    /* SERVICES */
+    #servicos { background: var(--gray-light); color: var(--black); }
+    #servicos .section-title { color: var(--black); }
+    #servicos .section-desc { color: #555; }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-top: 3rem;
+    }
+    .service-card {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 40px 32px;
+      border: 1px solid #e0e0e0;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--green);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s;
+    }
+    .service-card:hover { transform: translateY(-6px); box-shadow: 0 20px 60px rgba(0,0,0,0.1); }
+    .service-card:hover::before { transform: scaleX(1); }
+    .service-icon {
+      width: 56px; height: 56px;
+      background: #e8fdf0;
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.6rem;
+      margin-bottom: 1.4rem;
+    }
+    .service-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800;
+      font-size: 1.4rem;
+      text-transform: uppercase;
+      color: var(--black);
+      margin-bottom: 0.7rem;
+    }
+    .service-desc { font-size: 0.92rem; color: #666; line-height: 1.65; margin-bottom: 1.4rem; }
+    .service-tag {
+      display: inline-block;
+      background: #e8fdf0;
+      color: #00a152;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border-radius: 100px;
+    }
+
+    /* DIFERENCIAIS */
+    #diferenciais { background: var(--black-2); }
+    .diff-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      margin-top: 3rem;
+      border: 1px solid rgba(0,230,118,0.12);
+      border-radius: 14px;
+      overflow: hidden;
+    }
+    .diff-item {
+      padding: 40px 28px;
+      background: var(--black-3);
+      border-right: 1px solid rgba(0,230,118,0.1);
+      transition: background 0.2s;
+    }
+    .diff-item:last-child { border-right: none; }
+    .diff-item:hover { background: rgba(0,230,118,0.04); }
+    .diff-num {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 2.8rem;
+      font-weight: 900;
+      color: var(--green);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+    .diff-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+    .diff-desc { font-size: 0.87rem; color: var(--gray); line-height: 1.6; }
+
+    /* SOBRE */
+    #sobre { background: var(--gray-light); color: var(--black); }
+    #sobre .section-title { color: var(--black); }
+    .sobre-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .sobre-box {
+      background: var(--black);
+      border-radius: 16px;
+      padding: 60px 40px;
+      text-align: center;
+      color: var(--white);
+      position: relative;
+      overflow: hidden;
+    }
+    .sobre-box::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(circle at 50% 30%, rgba(0,230,118,0.15), transparent 70%);
+    }
+    .sobre-box-icon { font-size: 4rem; margin-bottom: 1rem; position: relative; }
+    .sobre-box-text {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      position: relative;
+    }
+    .sobre-box-text span { color: var(--green); }
+    .sobre-stats {
+      margin-top: 2rem;
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      position: relative;
+    }
+    .sobre-stat { text-align: center; flex: 1; }
+    .sobre-stat-num {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--green);
+    }
+    .sobre-stat-label { font-size: 0.72rem; color: #888; text-transform: uppercase; letter-spacing: 0.08em; }
+    .sobre-divider { width: 1px; background: rgba(255,255,255,0.1); }
+    .sobre-list { list-style: none; margin-top: 2rem; }
+    .sobre-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 14px 0;
+      border-bottom: 1px solid #e0e0e0;
+      font-size: 0.95rem;
+      color: #444;
+      line-height: 1.5;
+    }
+    .sobre-list li:last-child { border-bottom: none; }
+    .check { color: var(--green-dark); font-weight: 800; font-size: 1rem; flex-shrink: 0; margin-top: 1px; }
+
+    /* DEPOIMENTOS */
+    #depoimentos { background: var(--black); }
+    .dep-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      margin-top: 3rem;
+    }
+    .dep-card {
+      background: var(--black-3);
+      border: 1px solid rgba(0,230,118,0.1);
+      border-radius: 12px;
+      padding: 32px;
+      transition: border-color 0.2s;
+    }
+    .dep-card:hover { border-color: rgba(0,230,118,0.3); }
+    .dep-stars { color: var(--green); font-size: 1rem; letter-spacing: 2px; margin-bottom: 1rem; }
+    .dep-text { font-size: 0.95rem; color: #ccc; line-height: 1.7; margin-bottom: 1.4rem; font-style: italic; }
+    .dep-author { display: flex; align-items: center; gap: 12px; }
+    .dep-avatar {
+      width: 42px; height: 42px;
+      border-radius: 50%;
+      background: var(--green-dim);
+      border: 2px solid rgba(0,230,118,0.3);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800;
+      font-size: 1.1rem;
+      color: var(--green);
+    }
+    .dep-name { font-weight: 600; font-size: 0.92rem; }
+    .dep-local { font-size: 0.78rem; color: var(--gray); }
+
+    /* CONTATO */
+    #contato { background: var(--black-2); text-align: center; }
+    .cta-box {
+      background: linear-gradient(135deg, #0a1a0a 0%, var(--black-3) 100%);
+      border: 1px solid rgba(0,230,118,0.2);
+      border-radius: 20px;
+      padding: 80px 40px;
+      position: relative;
+      overflow: hidden;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .cta-box::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(0,230,118,0.1), transparent 70%);
+    }
+    .cta-box .section-tag,
+    .cta-box .section-title,
+    .cta-box .section-desc { position: relative; z-index: 1; }
+    .cta-box .section-title { color: var(--white); }
+    .cta-box .section-desc { color: #bbb; margin: 0 auto 2.5rem; }
+    .cta-actions { position: relative; z-index: 1; }
+    .cta-info {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 28px;
+      margin-top: 2.5rem;
+      position: relative; z-index: 1;
+    }
+    .cta-info-item { display: flex; align-items: center; gap: 8px; font-size: 0.88rem; color: var(--gray); }
+    .cta-info-item .ico { color: var(--green); }
+
+    /* FOOTER */
+    footer {
+      background: var(--black);
+      border-top: 1px solid rgba(0,230,118,0.1);
+      padding: 36px 6vw;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+    .footer-logo { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 1.3rem; color: var(--white); }
+    .footer-logo span { color: var(--green); }
+    .footer-text { font-size: 0.82rem; color: var(--gray); }
+
+    /* WHATSAPP FLOAT */
+    .wa-float {
+      position: fixed;
+      bottom: 28px; right: 28px;
+      z-index: 999;
+      width: 58px; height: 58px;
+      background: #25d366;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.5);
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+      animation: bouncein 0.5s 1s ease both;
+    }
+    .wa-float:hover { transform: scale(1.1); box-shadow: 0 6px 30px rgba(37,211,102,0.7); }
+    .wa-float svg { width: 30px; height: 30px; fill: white; }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes bouncein {
+      from { opacity: 0; transform: scale(0.5); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      .hero-stats { position: static; flex-direction: row; margin-top: 3rem; }
+      .diff-grid { grid-template-columns: 1fr 1fr; }
+      .diff-item { border-right: none; border-bottom: 1px solid rgba(0,230,118,0.1); }
+    }
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .sobre-inner { grid-template-columns: 1fr; gap: 40px; }
+    }
+    @media (max-width: 600px) {
+      section { padding: 70px 5vw; }
+      .hero-stats { flex-direction: column; }
+      .diff-grid { grid-template-columns: 1fr; }
+      .cta-box { padding: 50px 20px; }
+      footer { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="logo">Flash<span>Power</span>Cell</a>
+  <ul class="nav-links">
+    <li><a href="#servicos">Serviços</a></li>
+    <li><a href="#diferenciais">Diferenciais</a></li>
+    <li><a href="#sobre">Sobre</a></li>
+    <li><a href="#depoimentos">Avaliações</a></li>
+    <li><a href="https://wa.me/5511988522808" target="_blank" rel="noopener" class="nav-cta">💬 WhatsApp</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-badge">
+      <div class="badge-dot"></div>
+      ⚡ São Paulo / SP — Atendimento Rápido
+    </div>
+    <h1 class="hero-title">
+      Seu celular<br>
+      de volta a<br>
+      <span class="accent">100%</span>
+    </h1>
+    <p class="hero-sub">
+      Assistência técnica especializada em celulares e tablets. Troca de tela, bateria e reparo de placa com qualidade e garantia.
+    </p>
+    <div class="hero-perks">
+      <div class="perk"><div class="perk-icon">💰</div> Orçamento 100% grátis</div>
+      <div class="perk"><div class="perk-icon">🚗</div> Retirada e entrega a domicílio</div>
+      <div class="perk"><div class="perk-icon">⚡</div> Serviço rápido no mesmo dia</div>
+    </div>
+    <div class="hero-actions">
+      <a href="https://wa.me/5511988522808?text=Olá!%20Gostaria%20de%20um%20orçamento%20gratuito." target="_blank" rel="noopener" class="btn-primary">
+        💬 Orçamento Grátis no WhatsApp
+      </a>
+      <a href="#servicos" class="btn-secondary">Ver serviços →</a>
+    </div>
+  </div>
+
+  <div class="hero-stats">
+    <div class="stat-card">
+      <div class="stat-num">500+</div>
+      <div class="stat-label">Clientes Satisfeitos</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">98%</div>
+      <div class="stat-label">Taxa de Aprovação</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">1 dia</div>
+      <div class="stat-label">Prazo Médio</div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVIÇOS -->
+<section id="servicos">
+  <div class="section-tag">O que fazemos</div>
+  <h2 class="section-title">Nossos<br>Serviços</h2>
+  <p class="section-desc">Diagnóstico gratuito. Peças de qualidade. Garantia em todos os serviços realizados.</p>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">📱</div>
+      <div class="service-title">Troca de Tela</div>
+      <p class="service-desc">Substituição completa do display e touch com peças de alta qualidade. Diagnóstico grátis e garantia no serviço.</p>
+      <span class="service-tag">✓ Orçamento Grátis</span>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🔋</div>
+      <div class="service-title">Troca de Bateria</div>
+      <p class="service-desc">Bateria sem vida? Trocamos com peças originais ou de alta qualidade. Seu celular durando o dia todo de novo.</p>
+      <span class="service-tag">✓ Orçamento Grátis</span>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🔧</div>
+      <div class="service-title">Reparo de Placa</div>
+      <p class="service-desc">Micro-soldagem e reparo de placa-mãe para falhas complexas. Técnicos especializados com equipamentos profissionais.</p>
+      <span class="service-tag">✓ Orçamento Grátis</span>
+    </div>
+  </div>
+</section>
+
+<!-- DIFERENCIAIS -->
+<section id="diferenciais">
+  <div class="section-tag">Por que nos escolher</div>
+  <h2 class="section-title">Nossos<br>Diferenciais</h2>
+  <div class="diff-grid">
+    <div class="diff-item">
+      <div class="diff-num">01</div>
+      <div class="diff-title">Orçamento Grátis</div>
+      <p class="diff-desc">Diagnóstico e orçamento sem nenhum custo. Você decide se quer ou não fazer o reparo.</p>
+    </div>
+    <div class="diff-item">
+      <div class="diff-num">02</div>
+      <div class="diff-title">Vai Até Você</div>
+      <p class="diff-desc">Retirada e entrega a domicílio em São Paulo/SP. Sem deslocamento, sem fila, sem estresse.</p>
+    </div>
+    <div class="diff-item">
+      <div class="diff-num">03</div>
+      <div class="diff-title">Serviço Rápido</div>
+      <p class="diff-desc">A maioria dos reparos é feita no mesmo dia. Você não fica sem o seu celular por muito tempo.</p>
+    </div>
+    <div class="diff-item">
+      <div class="diff-num">04</div>
+      <div class="diff-title">Garantia</div>
+      <p class="diff-desc">Garantia em todos os serviços realizados. Qualidade e segurança em cada reparo.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE -->
+<section id="sobre">
+  <div class="sobre-inner">
+    <div>
+      <div class="section-tag">Quem somos</div>
+      <h2 class="section-title">Especialistas<br>em Dispositivos<br><span style="color:var(--green-dark)">Móveis</span></h2>
+      <p class="section-desc" style="color:#555;margin-bottom:0">Somos uma assistência técnica especializada em celulares e tablets em São Paulo/SP. Nosso compromisso é com qualidade, transparência e a satisfação total do cliente.</p>
+      <ul class="sobre-list">
+        <li><span class="check">✓</span> Técnicos especializados e experientes</li>
+        <li><span class="check">✓</span> Peças de qualidade com procedência garantida</li>
+        <li><span class="check">✓</span> Atendimento transparente sem custo oculto</li>
+        <li><span class="check">✓</span> Retirada e entrega em domicílio em SP</li>
+        <li><span class="check">✓</span> Orçamento 100% gratuito e sem compromisso</li>
+      </ul>
+    </div>
+    <div>
+      <div class="sobre-box">
+        <div class="sobre-box-icon">⚡</div>
+        <div class="sobre-box-text">Flash<br><span>Power Cell</span></div>
+        <p style="color:#aaa;font-size:0.9rem;margin-top:1rem;position:relative">Assistência Técnica · São Paulo / SP</p>
+        <div class="sobre-stats">
+          <div class="sobre-stat">
+            <div class="sobre-stat-num">500+</div>
+            <div class="sobre-stat-label">Clientes</div>
+          </div>
+          <div class="sobre-divider"></div>
+          <div class="sobre-stat">
+            <div class="sobre-stat-num">98%</div>
+            <div class="sobre-stat-label">Satisfação</div>
+          </div>
+          <div class="sobre-divider"></div>
+          <div class="sobre-stat">
+            <div class="sobre-stat-num">1 dia</div>
+            <div class="sobre-stat-label">Prazo médio</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEPOIMENTOS -->
+<section id="depoimentos">
+  <div class="section-tag">Avaliações</div>
+  <h2 class="section-title">O que nossos<br>clientes dizem</h2>
+  <p class="section-desc">A satisfação dos nossos clientes é nossa maior conquista.</p>
+  <div class="dep-grid">
+    <div class="dep-card">
+      <div class="dep-stars">★★★★★</div>
+      <p class="dep-text">"Mandei meu iPhone com a tela quebrada e vieram buscar em casa. No mesmo dia já devolveram consertado. Serviço impecável e super rápido!"</p>
+      <div class="dep-author">
+        <div class="dep-avatar">AM</div>
+        <div>
+          <div class="dep-name">Ana M.</div>
+          <div class="dep-local">São Paulo, SP</div>
+        </div>
+      </div>
+    </div>
+    <div class="dep-card">
+      <div class="dep-stars">★★★★★</div>
+      <p class="dep-text">"Orçamento gratuito e sem enrolação. A bateria do meu celular durava 2 horas, agora aguenta o dia todo. Super recomendo!"</p>
+      <div class="dep-author">
+        <div class="dep-avatar">CS</div>
+        <div>
+          <div class="dep-name">Carlos S.</div>
+          <div class="dep-local">São Paulo, SP</div>
+        </div>
+      </div>
+    </div>
+    <div class="dep-card">
+      <div class="dep-stars">★★★★★</div>
+      <p class="dep-text">"Meu Samsung não ligava mais. Fizeram reparo na placa e voltou a funcionar perfeitamente. Atendimento rápido, honesto e confiável."</p>
+      <div class="dep-author">
+        <div class="dep-avatar">RF</div>
+        <div>
+          <div class="dep-name">Rodrigo F.</div>
+          <div class="dep-local">São Paulo, SP</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTATO -->
+<section id="contato">
+  <div class="cta-box">
+    <div class="section-tag">Fale conosco</div>
+    <h2 class="section-title">Orçamento<br>100% Grátis</h2>
+    <p class="section-desc">Mande uma mensagem agora e receba seu orçamento sem compromisso. Rápido, fácil e sem custo!</p>
+    <div class="cta-actions">
+      <a href="https://wa.me/5511988522808?text=Olá!%20Gostaria%20de%20um%20orçamento%20gratuito%20para%20reparo%20do%20meu%20celular." target="_blank" rel="noopener" class="btn-primary">
+        💬 Chamar no WhatsApp Agora
+      </a>
+    </div>
+    <div class="cta-info">
+      <div class="cta-info-item"><span class="ico">📍</span> São Paulo / SP</div>
+      <div class="cta-info-item"><span class="ico">🚗</span> Retirada e entrega a domicílio</div>
+      <div class="cta-info-item"><span class="ico">⚡</span> Atendimento rápido</div>
+      <div class="cta-info-item"><span class="ico">💰</span> Orçamento sempre grátis</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Flash<span>Power</span>Cell</div>
+  <div class="footer-text">© 2025 Flash Power Cell · Assistência Técnica · São Paulo/SP</div>
+  <div class="footer-text" style="font-size:0.75rem;color:#555">Todos os direitos reservados</div>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/5511988522808?text=Olá!%20Gostaria%20de%20um%20orçamento%20gratuito." target="_blank" rel="noopener" class="wa-float" aria-label="Falar no WhatsApp">
+  <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+    <path d="M16 .5C7.44.5.5 7.44.5 16c0 2.76.71 5.35 1.96 7.6L.5 31.5l8.14-2.13A15.47 15.47 0 0016 31.5C24.56 31.5 31.5 24.56 31.5 16S24.56.5 16 .5zm0 28.3a13.2 13.2 0 01-6.72-1.83l-.48-.29-4.97 1.3 1.33-4.84-.31-.5A13.18 13.18 0 012.7 16C2.7 9.2 8.2 3.7 16 3.7S29.3 9.2 29.3 16 23.8 28.8 16 28.8zm7.22-9.87c-.39-.2-2.33-1.15-2.69-1.28-.36-.13-.62-.2-.88.2-.26.39-1.01 1.28-1.24 1.54-.23.26-.46.29-.85.1-.39-.2-1.65-.61-3.14-1.94-1.16-1.03-1.94-2.31-2.17-2.7-.23-.39-.02-.6.17-.79.18-.18.39-.46.59-.69.2-.23.26-.39.39-.65.13-.26.07-.49-.03-.69-.1-.2-.88-2.12-1.2-2.9-.32-.77-.64-.66-.88-.67h-.75c-.26 0-.68.1-1.04.49-.36.39-1.37 1.34-1.37 3.26s1.4 3.78 1.6 4.04c.19.26 2.75 4.2 6.67 5.89.93.4 1.66.64 2.23.82.94.3 1.79.26 2.46.16.75-.11 2.33-.95 2.66-1.87.33-.92.33-1.71.23-1.87-.1-.16-.36-.26-.75-.46z"/>
+  </svg>
+</a>
+
+</body>
+</html>
